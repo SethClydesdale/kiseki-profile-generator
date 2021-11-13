@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <title>Kiseki Profile Generator</title>
+    <meta name="title" content="Kiseki Profile Generator">
+    <meta name="twitter:title" content="Kiseki Profile Generator">
+    <meta property="og:title" content="Kiseki Profile Generator">
+    <meta name="description" content="Create and share your kiseki profile with others.">
+    <meta property="og:description" content="Create and share your kiseki profile with others.">
+    <link rel="shortcut icon" type="image/x-icon" href="aeon-system/images/tio.ico">
+
+    <meta name="keywords" content="Trails profile, Falcom" lang="en">
+    <meta name="language" content="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:site_name" content="sethclydesdale.github.io">
+    <meta property="og:url" content="https://sethclydesdale.github.io/kiseki-profile-generator/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://sethclydesdale.github.io/kiseki-profile-generator/aeon-system/images/social.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@SethC1995">
+
+    <link rel="stylesheet" href="aeon-system/special-style-section.min.css">
+    <script src="aeon-system/aeon-system.min.js"></script>
+    <script src="aeon-system/html2canvas.min.js"></script>
+    <script src="aeon-system/ga.js" async></script>
+  </head>
+
+  <body ondrop="AeonSystem.dropFile(event);">
+    <div id="content">
+      <div id="content-inner">
+        <h1 id="logo"><a href="./" title="Kiseki Profile Generator"><img src="aeon-system/images/logo.png" alt="Kiseki Profile Generator"></a></h1>
+        <div id="intro-box" class="clear">
+          <p id="intro-bubble">Welcome to the Kiseki Profile Generator!<br>This tool will help you create your own personalized Trails Profile so that you can share it with others.<br>Fill in the information below, then click "generate" to create your image.</p>
+          <div id="intro-tio-container"><img id="intro-tio" src="aeon-system/images/intro-tio.png" title="めんどくさいです・・・でもがんばります。" onclick="AeonSystem.limitBreak(this);"></div>
+          <div id="preload">
+            <img src="aeon-system/images/tio-staff.png">
+            <img src="aeon-system/images/tio-aeon-system.png">
+            <img src="aeon-system/images/tio-plato.png">
+            <img src="aeon-system/images/tio-plato-excited.png">
+            <img src="aeon-system/images/mishy-run.png">
+            <img src="aeon-system/images/tio-and-mishy.png">
+          </div>
+          <div id="aeon-system-audio">
+            <audio id="aeon-system-kidou"><source src="aeon-system/audio/aeon-system-kidou.mp3" type="audio/mpeg"></audio>
+            <audio id="aeon-system-limit-break"><source src="aeon-system/audio/aeon-system-limit-break.mp3" type="audio/mpeg"></audio>
+            <audio id="mystic-core" loop><source src="aeon-system/audio/Mystic%20Core.mp3" type="audio/mpeg"></audio>
+          </div>
+        </div>
+        
+        <div id="button-options">
+          <a id="link-contact" class="button" href="contact/" title="Contact the developer or submit feedback.">Contact</a>
+          <a id="link-github" class="button" href="https://github.com/SethClydesdale/kiseki-profile-generator" title="View the code on GitHub.">GitHub</a><br>
+        </div>
+        
+        <div id="info-zone">
+          <h2 id="info">General Information</h2>
+          <div class="info-row">
+            <label class="label" for="info-lang">Language:</label>
+            <select id="info-lang" onchange="AeonSystem.updateProfile(this, 'lang');">
+              <option value="en" default>English</option>
+              <option value="ja">日本語</option>
+            </select>
+          </div>
+          
+          <div class="info-row">
+            <label class="label" for="info-background">Background:</label>
+            <select id="info-background" onchange="AeonSystem.updateProfile(this, 'background');">
+              <option value="sora" default>Sky</option>
+              <option value="crossbell">Crossbell</option>
+              <option value="sen">Cold Steel</option>
+              <option value="kuro">Kuro</option>
+            </select>
+          </div>
+          
+          <div class="info-row">
+            <label class="label" for="info-avatar">Avatar:</label>
+            <button id="uploadAvatar" class="button" onclick="this.nextSibling.click();">Upload</button><input id="info-avatar" type="file" accept="image/*" onchange="AeonSystem.updateProfile(this, 'avatar');">
+          </div>
+          
+          <div class="info-row">
+            <label class="label" for="info-name">Name:</label>
+            <input id="info-name" type="text" oninput="AeonSystem.updateProfile(this, 'text');">
+            <input id="info-nameColor" type="color" oninput="AeonSystem.updateProfile(this, 'fontColor');">
+          </div>
+          
+          <div class="info-row">
+            <label class="label" for="info-handle">Twitter ID:</label>
+            <input id="info-handle" type="text" oninput="AeonSystem.updateProfile(this, 'text');">
+            <input id="info-handleColor" type="color" oninput="AeonSystem.updateProfile(this, 'fontColor');">
+          </div>
+          
+          <div class="info-row">
+            <label class="label" for="info-gender">Gender:</label>
+            <select id="info-gender" onchange="AeonSystem.updateProfile(this, 'gender');">
+              <option value="null" default>N/A</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <h2 id="played">Games Played</h2>
+          <div class="info-row">
+            <label class="label">Sky:</label>
+            <label class="checkbox"><input id="info-sky1" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">FC</label><span class="divider"></span>
+            <label class="checkbox"><input id="info-sky2" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">SC</label><span class="divider"></span>
+            <label class="checkbox"><input id="info-sky3" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">3rd</label>
+          </div>
+          
+          <div class="info-row">
+            <label class="label">Crossbell:</label>
+            <label class="checkbox"><input id="info-zero" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">Zero</label><span class="divider"></span>
+            <label class="checkbox"><input id="info-ao" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">Azure</label>
+          </div>
+          
+          <div class="info-row">
+            <label class="label">Cold Steel:</label>
+            <label class="checkbox"><input id="info-sen1" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">I</label><span class="divider"></span>
+            <label class="checkbox"><input id="info-sen2" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">II</label><span class="divider"></span>
+            <label class="checkbox"><input id="info-sen3" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">III</label><span class="divider"></span>
+            <label class="checkbox"><input id="info-sen4" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">IV</label><span class="divider"></span>
+            <label class="checkbox"><input id="info-haji" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">Reverie</label>
+          </div>
+          
+          <div class="info-row">
+            <label class="label">Kuro:</label>
+            <label class="checkbox"><input id="info-kuro1" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">Kuro</label>
+          </div>
+          
+          <div class="info-row">
+            <label class="label">Misc:</label>
+            <label class="checkbox"><input id="info-nayuta" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">Nayuta</label><span class="divider"></span>
+            <label class="checkbox"><input id="info-ysvskiseki" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">Ys vs Trails in the Sky</label>
+          </div>
+          
+          <div class="info-row">
+            <label class="label" for="info-otherGames">Other:</label>
+            <input id="info-otherGames" class="large-input" type="text" oninput="AeonSystem.updateProfile(this, 'text');">
+            <input id="info-otherGamesColor" type="color" oninput="AeonSystem.updateProfile(this, 'fontColor');">
+          </div>
+          
+          <h2 id="favorite">Favorite</h2>
+          <div class="info-row">
+            <label class="label" for="info-favgame">Games:</label>
+            <input id="info-favgame" class="large-input" type="text" oninput="AeonSystem.updateProfile(this, 'text');">
+            <input id="info-favgameColor" type="color" oninput="AeonSystem.updateProfile(this, 'fontColor');">
+          </div>
+          
+          <div class="info-row">
+            <label class="label" for="info-favchar">Chars:</label>
+            <input id="info-favchar" class="large-input" type="text" oninput="AeonSystem.updateProfile(this, 'text');">
+            <input id="info-favcharColor" type="color" oninput="AeonSystem.updateProfile(this, 'fontColor');">
+          </div>
+          
+          <div class="info-row">
+            <label class="label" for="info-favpair">Pairings:</label>
+            <input id="info-favpair" class="large-input" type="text" oninput="AeonSystem.updateProfile(this, 'text');">
+            <input id="info-favpairColor" type="color" oninput="AeonSystem.updateProfile(this, 'fontColor');">
+          </div>
+          
+          <h2 id="about">About Me</h2>
+          <div class="info-row">
+            <label class="label"></label>
+            <textarea id="info-about" class="large-input" oninput="AeonSystem.updateProfile(this, 'text');"></textarea>
+            <input id="info-aboutColor" type="color" oninput="AeonSystem.updateProfile(this, 'fontColor');">
+          </div>
+        </div>
+
+        <div class="center">
+          <button id="downloadProfile" class="button" onclick="AeonSystem.downloadProfile();">Save Profile</button>
+          <button id="uploadProfile" class="button" onclick="this.nextSibling.click();">Load Profile</button><input id="fileLoader" type="file" accept=".json" onchange="AeonSystem.uploadProfile(this);">
+        </div>
+        
+        <h2 id="preview">Preview</h2>
+        <div class="center">
+          <div id="preview-box">
+            <div id="template" class="sora-bg en-lang null-gender">
+              <div id="kp-lang"></div>
+              <img id="kp-avatar">
+              <div id="kp-name" class="text-zone"></div>
+              <div id="kp-handle" class="text-zone"></div>
+              <div id="kp-gender" class="circle"></div>
+              <div id="kp-sky1" class="circle"></div>
+              <div id="kp-sky2" class="circle"></div>
+              <div id="kp-sky3" class="circle"></div>
+              <div id="kp-zero" class="rect"></div>
+              <div id="kp-ao" class="rect"></div>
+              <div id="kp-sen1" class="circle"></div>
+              <div id="kp-sen2" class="circle"></div>
+              <div id="kp-sen3" class="circle"></div>
+              <div id="kp-sen4" class="circle"></div>
+              <div id="kp-haji" class="rect"></div>
+              <div id="kp-kuro1" class="rect"></div>
+              <div id="kp-nayuta" class="rect"></div>
+              <div id="kp-ysvskiseki" class="rect"></div>
+              <div id="kp-otherGames" class="text-zone"></div>
+              <div id="kp-favgame" class="text-zone"></div>
+              <div id="kp-favchar" class="text-zone"></div>
+              <div id="kp-favpair" class="text-zone"></div>
+              <div id="kp-about" class="text-zone"></div>
+            </div>
+            <script>AeonSystem.restoreProfile();</script>
+          </div>
+        </div>
+        
+        <div class="center">
+          <button class="button" onclick="AeonSystem.generateProfile();">Generate</button>
+        </div>
+        
+        <br>
+        <br>
+        <br>
+        <div id="tio-easter-egg" class="center">
+          <img id="mishy" src="aeon-system/images/mishy.png" style="visibility:hidden;">
+          <img id="tio-plato" src="aeon-system/images/sitting-tio.png" style="height:250px;">
+          <br>
+          <button class="button" style="font-size:18px;" onclick="AeonSystem.giveMishy(this);">Give Mishy</button>
+          <div id="tio-and-mishy-audio">
+            <audio id="tio-ah-mishy"><source src="aeon-system/audio/tio-ah-mishy.mp3" type="audio/mpeg"></audio>
+            <audio id="tio-mishy"><source src="aeon-system/audio/tio-mishy.mp3" type="audio/mpeg"></audio>
+            <audio id="tio-arigatou"><source src="aeon-system/audio/tio-arigatou.mp3" type="audio/mpeg"></audio>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+    
+    <footer>
+      <div class="inner clear">
+        <div class="footer-left"><a href="https://sethclydesdale.github.io/privacy/">Privacy</a></div>
+        <div class="footer-right">Created by <a href="https://sethclydesdale.github.io/">Seth Clydesdale</a></div>
+      </div>
+    </footer>
+    
+    <script>AeonSystem.kidou();</script>
+  </body>
+</html>

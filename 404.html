@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tio Not Found | Hajimari no Kiseki Jisho</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://sethclydesdale.github.io/hajimari-no-kiseki-jisho/aeon-system/images/tio.ico">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:site_name" content="sethclydesdale.github.io">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://sethclydesdale.github.io/hajimari-no-kiseki-jisho/aeon-system/images/social.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@SethC1995">
+    <link rel="stylesheet" href="https://sethclydesdale.github.io/hajimari-no-kiseki-jisho/aeon-system/special-style-section.min.css">
+    <style>
+      /*
+        shamelessly lifted from Typing with Mishy which was also lifted from Falcom's site (can you blame me? it's perfect, just like Tio)
+        https://github.com/SethClydesdale/typing-with-mishy
+        https://www.falcom.co.jp/tio-is-the-best/
+      */
+      body:before, body:after { display:none; }
+      
+      h2 { font-size:26px; }
+      
+      #tio-404 { max-width:100%; }
+      #tio-mishy-404 {
+        display:none;
+        margin-top:30px;
+        max-width:100%;
+      }
+      
+      .columns-2 {
+        width:90%;
+        margin:0 auto;
+        display:flex;
+      }
+      
+      .columns-2 > div {
+        display:inline-block;
+        width:50%;
+        float:left;
+      }
+      
+      .columns-2 .column-1 {
+        width:25%;
+        align-self:center;
+      }
+      .columns-2 .column-2 { width:75%; }
+      
+      /* BUTTONS */
+      .button {
+        color:#FFF;
+        background:#39C;
+        font-size:18px;
+        font-weight:bold;
+        font-family:'メイリオ', 'Meiryo', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Arial, sans-serif;
+        text-align:left;
+        text-decoration:none;
+        border:none;
+        border-bottom:2px solid #19B;
+        display:inline-block;
+        margin:0;
+        padding:6px 12px;
+        cursor:pointer;
+        outline:none;
+      }
+      
+    @media (max-width:960px) {
+      .columns-2 .column-1 { display:none; }
+      .columns-2 .column-2 h2 {
+        font-size:32px;
+        border:none;
+      }
+      .columns-2 .column-2 {
+        width:100%;
+        text-align:center;
+      }
+      #tio-mishy-404 { display:block; }
+    }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <div id="content-inner">
+        <h1 id="logo"><a href="https://sethclydesdale.github.io/hajimari-no-kiseki-jisho/" title="Hajimari no Kiseki Jisho"><img src="https://sethclydesdale.github.io/hajimari-no-kiseki-jisho/aeon-system/images/logo.png" alt="Hajimari no Kiseki Jisho"></a></h1>
+        
+        <div class="columns-2 clear">
+          <div class="column-1"><div style="padding:10px;"><img id="tio-404" src="https://sethclydesdale.github.io/hajimari-no-kiseki-jisho/aeon-system/images/sitting-tio.png"></div></div>
+          
+          <div class="column-2">
+            <h2>404 Tio Not Found</h2>
+            <p style="font-size:20px;">Sorry, the Tio Tot you're looking for cannot be found.</p>
+            <p style="font-size:18px;">お<ruby>探<rt>さが</rt></ruby>しのティオすけは<ruby>見<rt>み</rt></ruby>つかりませんでした。</p>
+            <button class="button menu-opt" onclick="this.querySelector('A').click();"><a href="https://sethclydesdale.github.io/hajimari-no-kiseki-jisho/"></a>Return to the Index / TOPページに戻る</button>
+          </div>
+        </div>
+        <div id="tio-mishy-404" class="center"><img src="https://sethclydesdale.github.io/hajimari-no-kiseki-jisho/aeon-system/images/sitting-tio-mishy.png"></div>
+      </div>
+    </div>
+    <script>(function (window, document) {
+      // makes corrections to the page if used on the local file system
+      if (window.location.protocol == 'file:') {
+        var domain = 'https://sethclydesdale.github.io/hajimari-no-kiseki-jisho/',
+            a = document.querySelectorAll('a[href*="' + domain + '"], script[src*="' + domain + '"], img[src*="' + domain + '"], link[href*="' + domain + '"], #bg-404'),
+            i = 0,
+            j = a.length, script;
+        
+        for (; i < j; i++) {
+          switch (a[i].tagName) {
+            // change the anchor values to their offline files
+            case 'A' :
+              a[i].href = a[i].href.replace(domain, '');
+              /404\.html$/.test(a[i].href) ? a[i].href = './index.html' : a[i].href += 'index.html';
+              break;
+            
+            // change link sources to their offline resources
+            case 'LINK' :
+              a[i].href = a[i].href.replace(domain, '');
+              break;
+              
+            // change the js source to the offline version
+            case 'SCRIPT' :
+              // since we cannot stop js execution, check if the user actually has no internet connection before appending the script
+              if (!/ga\.js$/.test(a[i].src) && !navigator.onLine) {
+                script = document.createElement('SCRIPT');
+                script.src = a[i].src.replace(domain, '');
+                script.type = 'text/javascript';
+                
+                document.body.removeChild(a[i]);
+                document.body.appendChild(script);
+              }
+              break;
+              
+            // change image source
+            case 'IMG' :
+              a[i].src = a[i].src.replace(domain, '');
+              break;
+              
+            // change background image source
+            case 'DIV' :
+              a[i].style.backgroundImage = a[i].style.backgroundImage.replace(domain, '');
+              break;
+          }
+        }
+      }
+    }(window, document));</script>
+  </body>
+</html>
