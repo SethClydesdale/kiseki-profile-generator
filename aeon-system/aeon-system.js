@@ -13,6 +13,14 @@
   window.AeonSystem = {
     // initial functions for page load
     kidou : function () {
+      // automatically set language
+      var select = document.getElementById('info-lang');
+      
+      if (/lang=(?:en|ja)/.test(window.location.search.toLowerCase()) && select) {
+        select.value = /ja/.test(window.location.search.toLowerCase()) ? 'ja' : 'en';
+        select.dispatchEvent(new Event('change'));
+      }
+      
       // # OFFLINE LINK MODIFICATIONS #
       // appends index.html to links if this project is hosted on the local file system
       if (window.location.protocol == 'file:') {
@@ -41,11 +49,11 @@
       
       // display name
       name : '',
-      nameColor : '#000',
+      nameColor : '#000000',
       
       // twitter id
       handle : '',
-      handleColor : '#000',
+      handleColor : '#000000',
       
       // sky
       sky1 : false,
@@ -70,19 +78,19 @@
       nayuta : false,
       ysvskiseki : false,
       otherGames : '',
-      otherGamesColor : '#000',
+      otherGamesColor : '#000000',
       
       // favorites
       favgame : '',
-      favgameColor : '#000',
+      favgameColor : '#000000',
       favchar : '',
-      favcharColor : '#000',
+      favcharColor : '#000000',
       favpair : '',
-      favpairColor : '#000',
+      favpairColor : '#000000',
       
       // about me
       about : '',
-      aboutColor : '#000'
+      aboutColor : '#000000'
     },
     
     
@@ -90,15 +98,48 @@
     updateProfile : function (caller, type) {
       switch (type) {
         case 'lang' :
-          var tmp = document.getElementById('template');
-          tmp.className = tmp.className.replace(/(?:en|ja)-lang/, caller.value + '-lang');
+          // update main language class for switching texts
+          document.body.className = document.body.className.replace(/(?:en|ja)-lang/, caller.value + '-lang');
+          
+          // update background select texts
+          var bg = document.getElementById('info-background'),
+              selected = bg.value;
+          
+          if (caller.value == 'en') {
+            bg.innerHTML = '<option value="sora" default>Sky</option><option value="crossbell">Crossbell</option><option value="sen">Cold Steel</option><option value="kuro">Kuro</option>';
+            bg.value = selected;
+            
+          } else {
+            bg.innerHTML = '<option value="sora" default>空の軌跡</option><option value="crossbell">クロスベル</option><option value="sen">閃の軌跡</option><option value="kuro">黎の軌跡</option>';
+            bg.value = selected;
+          }
+          
+          // update gender select options
+          var gender = document.getElementById('info-gender'),
+              selected = gender.value;
+          
+          if (caller.value == 'en') {
+            gender.innerHTML = '<option value="null" default>N/A</option><option value="male">Male</option><option value="female">Female</option><option value="other">Other</option>';
+            gender.value = selected;
+            
+          } else {
+            gender.innerHTML = '<option value="null" default>無し</option><option value="male">男</option><option value="female">女</option><option value="other">他</option>';
+            gender.value = selected;
+          }
+          
+          // update object settings
           AeonSystem.profile.lang = caller.value;
           break;
           
         // note: avatar data is not saved
         case 'avatar' :
           // set avatar
-          document.getElementById('kp-avatar').src = URL.createObjectURL(caller.files[0]);
+          var ava = document.getElementById('kp-avatar');
+          ava.src = URL.createObjectURL(caller.files[0]);
+          ava.style.display = '';
+          
+          // let user know upload was successful
+          AeonSystem.avatarOK();
 
           // clears input so file can be loaded again
           document.getElementById('info-avatar').value = '';
@@ -146,7 +187,7 @@
           break;
       }
       
-      // save profile to localStorage so progress is no lost
+      // save profile to localStorage so progress is not lost
       AeonSystem.saveProfile();
     },
     
@@ -169,8 +210,9 @@
           
           if (field) {
             // handles checkbox values
-            if (field.tagName == 'INPUT' && field.type == 'checkbox' && AeonSystem.profile[i] == true) {
-              field.click();
+            if (field.tagName == 'INPUT' && field.type == 'checkbox') {
+              field.checked = AeonSystem.profile[i];
+              field.dispatchEvent(new Event('change'));
               
             } else {
               field.value = AeonSystem.profile[i];
@@ -182,6 +224,33 @@
             console.error(field, i, AeonSystem.profile[i]);
           }
         }
+      }
+    },
+    
+    
+    // clears all fields
+    resetProfile : function () {
+      if (confirm(AeonSystem.profile.lang == 'en' ? 'All fields will be reset. Do you want to continue?' : 'すべての情報をリセットします。よろしいですか？')) {
+        for (var i in AeonSystem.profile) {
+          var field = document.getElementById('info-' + i);
+          if (field.type == 'checkbox') {
+            field.checked = false;
+            
+          } else if (i != 'lang') {
+            field.value = 
+              i == 'background' ? 'sora' :
+              i == 'gender' ? 'null' :
+              /Color/.test(i) ? '#000000' : '';
+          }
+          
+          // lazily update profile object + storage
+          field.dispatchEvent(new Event((field.tagName == 'SELECT' || field.type == 'checkbox') ? 'change' : 'input'));
+        }
+        
+        // remove avatar
+        var ava = document.getElementById('kp-avatar');
+        ava.src = '';
+        ava.style.display = 'none';
       }
     },
     
@@ -228,6 +297,23 @@
     dropFile : function (e) {
       AeonSystem.uploadProfile(e.dataTransfer.files[0], true);
       e.preventDefault();
+    },
+    
+    
+    // prompt to let the user know their avatar was uploaded successfully
+    avatarOK : function () {
+      if (AeonSystem.avatarPrompt) {
+        clearTimeout(AeonSystem.avatarPrompt);
+      }
+      
+      // show prompt
+      document.getElementById('uploadOK').style.display = '';
+      
+      // hide prompt after a few seconds
+      AeonSystem.avatarPrompt = setTimeout(function() {
+        document.getElementById('uploadOK').style.display = 'none';
+        delete AeonSystem.avatarPrompt;
+      }, 3000);
     },
     
     

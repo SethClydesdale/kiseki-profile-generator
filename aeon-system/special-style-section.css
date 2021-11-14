@@ -49,6 +49,12 @@
 }
 
 
+/* page language */
+.en-lang .ja, .ja-lang .en {
+  display:none !important;
+}
+
+
 /* info inputs */
 input[type="text"], input[type="color"], textarea, select {
   font-size:16px;
@@ -113,6 +119,19 @@ input[type="file"] {
   resize:none;
 }
 
+#uploadOK {
+  color:#080;
+  font-size:14px;
+  font-weight:bold;
+}
+
+#uploadOK img {
+  position:absolute;
+  margin-left:3px;
+}
+
+#profile-controls { font-size:0; }
+
 /* kiseki profile */
 #preview-box {
   border:2px solid #CCC;
@@ -123,13 +142,15 @@ input[type="file"] {
   overflow:auto;
 }
 
+#generateProfile { font-size:18px; }
+
 #template {
   width:1074px;
   height:1470px;
   margin:0 auto;
   position:relative;
   background-repeat:no-repeat;
-  font-family:Cuprum, CuprumWeb, Arial;
+  font-family:Cuprum, CuprumWeb, 'メイリオ',Meiryo,Osaka,'ＭＳ Ｐゴシック','MS PGothic',"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Arial,sans-serif;
   color:#333;
 }
 
@@ -304,6 +325,101 @@ input[type="file"] {
 }
 
 
+/* Japanese profile settings */
+.ja-lang .text-zone {
+  font-size:16px;
+  font-weight:bold;
+}
+
+.ja-lang .text-zone, .ja-lang #kp-name {
+  font-family:'メイリオ',Meiryo,Osaka,'ＭＳ Ｐゴシック','MS PGothic',"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Arial,sans-serif;
+}
+
+.ja-lang #kp-name, .ja-lang #kp-handle {
+  font-size:28px;
+  font-weight:normal;
+}
+
+.ja-lang #kp-name { top:185px; }
+.ja-lang #kp-handle { top:360px; }
+
+.ja-lang .male-gender #kp-gender { left:738px; }
+.ja-lang .female-gender #kp-gender { left:891px; }
+
+.ja-lang #kp-sky1 { left:289px; }
+.ja-lang #kp-sky2 { left:379px; }
+.ja-lang #kp-sky3 { left:475px; }
+
+.ja-lang #kp-zero {
+  left:597px;
+  width:156px;
+}
+
+.ja-lang #kp-ao {
+  left:787px;
+  width:155px;
+}
+
+.ja-lang #kp-sen1 { left:281px; }
+.ja-lang #kp-sen2 { left:352px; }
+.ja-lang #kp-sen3 { left:431px; }
+.ja-lang #kp-sen4 { left:516px; }
+.ja-lang #kp-haji {
+  left:597px;
+  width:156px;
+}
+
+.ja-lang #kp-kuro1 {
+  height:40px;
+  width:156px;
+  top:770px;
+  left:85px;
+}
+
+.ja-lang #kp-nayuta {
+  left:85px;
+  width:232px;
+}
+
+.ja-lang #kp-ysvskiseki {
+  left:371px;
+  width:307px;
+}
+
+.ja-lang #kp-otherGames {
+  top:927px;
+  left:252px;
+  width:726px;
+}
+
+.ja-lang #kp-favgame {
+  top:1060px;
+  left:212px;
+  width:766px;
+}
+
+.ja-lang #kp-favchar {
+  top:1125px;
+  left:249px;
+  width:729px;
+}
+
+.ja-lang #kp-favpair {
+  top:1192px;
+  left:249px;
+  width:730px;
+}
+
+.ja-lang #kp-about {
+  font-size:18px;
+  top:1310px;
+  left:80px;
+  width:916px;
+  height:133px;
+  white-space:normal;
+}
+
+
 /* INITIAL STYLES */
 body {
   color:#333;
@@ -434,6 +550,11 @@ body {
   border-radius:10px 10px 0px 0px;
 }
 
+.ja-lang #intro-bubble:before {
+  content:"ティオ・プラトー";
+  width:150px;
+}
+
 #intro-bubble:after {
   content:"";
   border-bottom:20px solid #39C;
@@ -466,7 +587,7 @@ a:hover { text-decoration:underline; }
   color:#FFF;
   background:#39C;
   font-size:16px;
-  font-family:Meiryo, Osaka, Arial, sans-serif;
+  font-family:'メイリオ',Meiryo,Osaka,'ＭＳ Ｐゴシック','MS PGothic',"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Arial,sans-serif;
   text-decoration:none;
   border:none;
   font-weight:bold;
