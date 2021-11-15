@@ -7,7 +7,7 @@ Kiseki Profile Generator is a website that lets you create your own Kiseki Profi
 ## Profile Templates 
 This website was created to help make the process of filling out the image template easier, since not everyone has access to image editing software. However, if you'd like to add your own personal flair, feel free to download the templates via the following link.
 
-[**Download Template Package**](https://sethclydesdale.github.io/kiseki-profile-generator/aeon-system/template/Kiseki Profile Templates.zip)
+[**Download Template Package**](https://sethclydesdale.github.io/kiseki-profile-generator/aeon-system/template/Kiseki%20Profile%20Templates.zip)
 
 This package contains both English and Japanese templates. You can edit the provided images in Photoshop, [GIMP](https://www.gimp.org/), [Pixlr](https://pixlr.com/), or any other image editing software.
 
