@@ -28,12 +28,18 @@
   </head>
 
   <body ondrop="AeonSystem.dropFile(event);" class="en-lang">
-    <script>if (storageOK && /"ja"/.test(localStorage.kisekiProfile) || AeonSystem.profile == 'ja') document.body.className = 'ja-lang'; // quick lang change</script>
+<script>
+// quick lang change
+if (storageOK && /"lang":"ja"/.test(localStorage.kisekiProfile)) {
+  document.body.className = 'ja-lang';
+  AeonSystem.profile.lang = 'ja';
+}
+</script>
     <div id="content">
       <div id="content-inner">
         <h1 id="logo"><a href="./" title="Kiseki Profile Generator"><img src="aeon-system/images/logo.png" alt="Kiseki Profile Generator"></a></h1>
         <div id="intro-box" class="clear">
-          <p id="intro-bubble"><span class="en">Welcome to the Kiseki Profile Generator.</span><span class="ja">軌跡プロフィールジェネレーターへようこそ。</span><br><span class="en">This website will let you create your own personal Trails Profile that you can share with others.</span><span class="ja">このウェブサイトは、あなたの軌跡プロフィールを作らせます。</span><br><span class="en">Fill in the information below, then click "generate" under the preview to generate your profile.</span><span class="ja">次の情報を書き込んで、プレビューの下の「ジェネレート」をクリックします。</span></p>
+          <p id="intro-bubble"><span class="en">Welcome to the Kiseki Profile Generator.</span><span class="ja">軌跡プロフィールジェネレーターへようこそ。</span><br><span class="en">This website will let you create your own personal Trails Profile that you can share with others.</span><span class="ja">このウェブサイトは、あなたの軌跡プロフィールを作らせます。</span><br><span class="en">Fill in the information below, then click "generate" under the preview to generate your profile.</span><span class="ja">次の情報を書き込んで、プレビューの下の「生成する」をクリックします。</span></p>
           <div id="intro-tio-container"><img id="intro-tio" src="aeon-system/images/intro-tio.png" title="めんどくさいです・・・でもがんばります。" onclick="AeonSystem.limitBreak(this);"></div>
           <div id="preload">
             <img src="aeon-system/images/tio-staff.png">
@@ -51,9 +57,11 @@
         </div>
         
         <div id="button-options">
-          <a id="link-download" class="button" href="aeon-system/template/Templates.zip"><span class="en">Download Templates</span><span class="ja">テンプレートをダウンロードする</span></a>
-          <a id="link-contact" class="button" href="contact/"><span class="en">Contact</span><span class="ja">連絡する</span></a>
-          <a id="link-github" class="button" href="https://github.com/SethClydesdale/kiseki-profile-generator">GitHub</a><br>
+          <span class="en"><a class="link-profiles button" href="https://twitter.com/search?q=%23TrailsProfile&src=typed_query&f=live" target="_blank"><i class="fa">&#xf099;</i>#TrailsProfile</a></span>
+          <span class="ja"><a class="link-profiles button" href="https://twitter.com/search?q=%23%E8%BB%8C%E8%B7%A1%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB&src=typed_query&f=live" target="_blank"><i class="fa">&#xf099;</i>#軌跡プロフィール</a></span>
+          <a id="link-download" class="button" href="aeon-system/template/Kiseki%20Profile%20Templates.zip"><i class="fa">&#xf019;</i><span class="en">Download Templates</span><span class="ja">テンプレートをダウンロードする</span></a>
+          <a id="link-contact" class="button" href="contact/"><i class="fa">&#xf1d8;</i><span class="en">Contact</span><span class="ja">連絡する</span></a>
+          <a id="link-github" class="button" href="https://github.com/SethClydesdale/kiseki-profile-generator"><i class="fa">&#xf09b;</i>GitHub</a><br>
         </div>
         
         <div id="info-zone">
@@ -78,8 +86,8 @@
           
           <div class="info-row">
             <label class="label" for="info-avatar"><span class="en">Avatar:</span><span class="ja">プロフィール写真：</span></label>
-            <button id="uploadAvatar" class="button" onclick="this.nextSibling.click();"><span class="en">Upload</span><span class="ja">アップロードする</span></button><input id="info-avatar" type="file" accept="image/*" onchange="AeonSystem.updateProfile(this, 'avatar');">
-            <span id="uploadOK" style="display:none;"><span class="en">Uploaded!</span><span class="ja">アップロードした！</span> <img src="aeon-system/images/mishy-upload-ok.png"></span>
+            <button id="uploadAvatar" class="button" onclick="this.nextSibling.click();"><i class="fa">&#xf093;</i><span class="en">Upload</span><span class="ja">アップロードする</span></button><input id="info-avatar" type="file" accept="image/*" onchange="AeonSystem.updateProfile(this, 'avatar');">
+            <span id="uploadOK" style="display:none;"><span class="en">Uploaded!</span><span class="ja">アップロードした！</span><img src="aeon-system/images/mishy-upload-ok.png"></span>
           </div>
           
           <div class="info-row">
@@ -172,9 +180,9 @@
         </div>
 
         <div id="profile-controls" class="center">
-          <button id="downloadProfile" class="button" onclick="AeonSystem.downloadProfile();"><span class="en">Save</span><span class="ja">セーブする</span></button>
-          <button id="uploadProfile" class="button" onclick="this.nextSibling.click();"><span class="en">Load</span><span class="ja">ロードする</span></button><input id="fileLoader" type="file" accept=".json" onchange="AeonSystem.uploadProfile(this);">
-          <button id="resetProfile" class="button" onclick="AeonSystem.resetProfile();"><span class="en">Reset</span><span class="ja">リセットする</span></button>
+          <button id="downloadProfile" class="button" onclick="AeonSystem.downloadProfile();"><i class="fa">&#xf0c7;</i><span class="en">Save</span><span class="ja">セーブする</span></button>
+          <button id="uploadProfile" class="button" onclick="this.nextSibling.click();"><i class="fa">&#xf15c;</i><span class="en">Load</span><span class="ja">ロードする</span></button><input id="fileLoader" type="file" accept=".json" onchange="AeonSystem.uploadProfile(this);">
+          <button id="resetProfile" class="button" onclick="AeonSystem.resetProfile();"><i class="fa">&#xf01e;</i><span class="en">Reset</span><span class="ja">リセットする</span></button>
         </div>
         
         <h2 id="preview"><span class="en">Preview</span><span class="ja">プレビュー</span></h2>
@@ -210,7 +218,7 @@
         </div>
         
         <div class="center">
-          <button id="generateProfile" class="button" onclick="AeonSystem.generateProfile();"><span class="en">Generate</span><span class="ja">ジェネレート</span></button>
+          <button id="generateProfile" class="button" onclick="AeonSystem.generateProfile();"><i class="fa">&#xf0d0;</i><span class="en">Generate</span><span class="ja">生成する</span></button>
         </div>
         
         <br>
@@ -220,7 +228,7 @@
           <img id="mishy" src="aeon-system/images/mishy.png" style="visibility:hidden;">
           <img id="tio-plato" src="aeon-system/images/sitting-tio.png" style="height:250px;">
           <br>
-          <button class="button" style="font-size:18px;" onclick="AeonSystem.giveMishy(this);"><span class="en">Give Mishy</span><span class="ja">みっしぃをあげる</span></button>
+          <button class="button" style="font-size:18px;" onclick="AeonSystem.giveMishy(this);"><img id="yurumishy" src="aeon-system/images/yurumishy.png"><span class="en">Give Mishy</span><span class="ja">みっしぃをあげる</span></button>
           <div id="tio-and-mishy-audio">
             <audio id="tio-ah-mishy"><source src="aeon-system/audio/tio-ah-mishy.mp3" type="audio/mpeg"></audio>
             <audio id="tio-mishy"><source src="aeon-system/audio/tio-mishy.mp3" type="audio/mpeg"></audio>

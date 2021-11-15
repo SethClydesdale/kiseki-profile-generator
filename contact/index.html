@@ -39,7 +39,12 @@
   </head>
 
   <body class="en-lang">
-    <script>if (storageOK && /"ja"/.test(localStorage.kisekiProfile) || /lang=ja/.test(window.location.search.toLowerCase())) document.body.className = 'ja-lang';</script>
+<script>
+if (storageOK && /"lang":"ja"/.test(localStorage.kisekiProfile) || /lang=ja/.test(window.location.search.toLowerCase())) {
+  document.body.className = 'ja-lang';
+  AeonSystem.profile.lang = 'ja';
+}
+</script>
     <div id="content">
       <div id="content-inner">
         <h1 id="logo"><a href="../" title="Kiseki Profile Generator"><img src="../aeon-system/images/logo.png" alt="Kiseki Profile Generator"></a></h1>

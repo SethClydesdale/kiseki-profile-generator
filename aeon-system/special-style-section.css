@@ -6,6 +6,27 @@
   font-style:normal;
 }
 
+@font-face {
+  font-family:'FontAwesomeWeb';
+  src:url('fonts/fontawesome-webfont.eot?v=4.7.0');
+  src:url('fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), 
+      url('fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), 
+      url('fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), 
+      url('fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), 
+      url('fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+  font-weight:normal;
+  font-style:normal;
+}
+
+.fa {
+  display:inline-block;
+  font:normal normal normal 14px/1 FontAwesomeWeb, FontAwesome;
+  font-size:inherit;
+  text-rendering:auto;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
 /* ANIMATIONS */
 @keyframes aeon-glow {
   0% { box-shadow:0 0 20px 11px #F00; }
@@ -112,6 +133,8 @@ input[type="text"]:focus, input[type="color"]:focus, textarea:focus, select:focu
 input[type="file"] {
   position:absolute;
   visibility:hidden;
+  height:1px;
+  width:1px;
 }
 
 #info-about {
@@ -121,13 +144,14 @@ input[type="file"] {
 
 #uploadOK {
   color:#080;
-  font-size:14px;
+  font-size:16px;
   font-weight:bold;
+  margin-left:3px;
 }
 
 #uploadOK img {
   position:absolute;
-  margin-left:3px;
+  margin-left:6px;
 }
 
 #profile-controls { font-size:0; }
@@ -437,6 +461,7 @@ body {
   background:#FFF;
   background:rgba(255, 255, 255, 0.5);
   width:80%;
+  max-width:1600px;
   margin:0 auto;
   flex:1 0 auto;
 }
@@ -445,10 +470,6 @@ body {
 #logo {
   text-align:center;
   margin:0 0 20px 0;
-}
-
-#logo img {
-  height:200px;
 }
 
 /* intro */
@@ -476,16 +497,26 @@ body {
   padding-right:230px;
 }
 
-#link-contact { background-color:#05C; }
-#link-github  { background-color:#96F }
+#button-options a {
+  text-shadow:1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+#button-options .link-profiles { border-bottom:2px solid #17A; }
+
+#link-contact { background-color:#05C; border-bottom:2px solid #03A; }
+#link-github  { background-color:#96F; border-bottom:2px solid #74D; }
+#link-download  { background-color:#9C6; border-bottom:2px solid #7A4; }
 
 #link-contact:hover { background-color:#04B; }
 #link-github:hover  { background-color:#85E; }
+#link-download:hover  { background-color:#8B5; }
 
 #link-contact:active,
 #link-contact:focus { background-color:#03A; }
 #link-github:active,
 #link-github:focus  { background-color:#74D; }
+#link-download:active,
+#link-download:focus  { background-color:#7A4; }
 
 #preload {/* for preloading our Tios */
   width:1px;
@@ -607,6 +638,20 @@ a:hover { text-decoration:underline; }
 .button:hover, a.button:hover { background:#28B; }
 .button:focus, a.button:focus { background:#17A; }
 
+/* button icons */
+.button .fa {
+  font-size:18px;
+  margin-right:6px;
+  vertical-align:middle;
+}
+
+#link-github .fa { font-size:20px; }
+
+#yurumishy {
+  vertical-align:-4px;
+  margin-right:6px;
+}
+
 
 /* lists */
 .menu-list {
@@ -721,6 +766,7 @@ footer {
   background:#FFF;
   background:rgba(255, 255, 255, 0.5);
   width:80%;
+  max-width:1600px;
   margin:0 auto;
 }
 footer .inner { padding:10px 15px; }
@@ -736,4 +782,72 @@ footer .inner { padding:10px 15px; }
   }
   
   footer { width:100%; }
+}
+
+
+@media (max-width:750px) {
+  #logo img { max-width:100%; }
+
+  .info-row { text-align:center; }
+
+  #uploadOK { display:block; }
+  
+  .info-row .label {
+    text-align:center;
+    display:block;
+    width:auto;
+  }
+  
+  .info-row input[type="text"], .info-row select, .info-row textarea {
+    width:90%;
+  }
+
+  .info-row input[type="color"] {
+    margin-top:5px;
+  }
+
+  #button-options {
+    text-align:center;
+    margin-top:70px;
+    padding:0 !important;
+  }
+
+  #tio-easter-egg { height:auto; }
+
+  #mishy, #tio-plato { height:100px !important; }
+
+  #intro-bubble, #intro-tio-container {
+    text-align:center;
+    float:none;
+  }
+
+  #intro-bubble {
+    width:90%;
+    min-width:auto;
+    margin:0 auto;
+  }
+
+  #intro-bubble:after {
+    bottom:-20px;
+    right:50%;
+    transform:rotate(180deg);
+  }
+  
+  .tio-limit-break:after, .tio-limit-break:before { display:none; }
+  
+  #contact-links {
+    float:none !important;
+    display:block;
+    width:80% !important;
+    margin:0 auto;
+    margin-top:60px;
+    top:0 !important;
+    right:0 !important;
+  }
+  
+  .footer-left, .footer-right {
+    text-align:center;
+    margin:15px 0;
+    float:none;
+  }
 }

@@ -13,7 +13,7 @@
   window.AeonSystem = {
     // initial functions for page load
     kidou : function () {
-      // automatically set language
+      // automatically set language based on the url query (?lang=ja||en)
       var select = document.getElementById('info-lang');
       
       if (/lang=(?:en|ja)/.test(window.location.search.toLowerCase()) && select) {
@@ -358,7 +358,7 @@
         
         // prepare youselves for greatness... Tio.. TALKS.
         AeonSystem.audio.kidou.play();
-        AeonSystem.intro.innerHTML = '<span class="aeon-system-dialogue">Aeon system, activate.</span>';
+        AeonSystem.intro.innerHTML = '<span class="aeon-system-dialogue"><span class="en">Aeon system, activate.</span><span class="ja">エイオンシステム、起動。</span></span>';
         
         // begin playing mystic core, one of the greatest tracks in Azure, made even greater by Tio's epic scene on top of Orchis tower
         setTimeout(function() { // 1; 1000
@@ -371,7 +371,7 @@
             // Tio finally releases all limiters on the Aeon System, for an epic display
             setTimeout(function() { // 3; 3000
               AeonSystem.audio.limitBreak.play();
-              AeonSystem.intro.innerHTML = '<span class="aeon-system-dialogue">Aeon system, limit break!</span>';
+              AeonSystem.intro.innerHTML = '<span class="aeon-system-dialogue"><span class="en">Aeon system, limit break!</span><span class="ja">エイオンシステム、<ruby>制限解除<rt>リミットブレイク</rt></ruby>！</span></span>';
               
               // light up Tio's cat ear sensors further
               setTimeout(function() { // 4; 2200
@@ -379,7 +379,7 @@
                 AeonSystem.animating = false;
                 
                 setTimeout(function() { // 5; 1000
-                  AeonSystem.intro.innerHTML = '<span class="aeon-system-dialogue">You can stop the music at any time by *sigh* clicking me..</span>';
+                  AeonSystem.intro.innerHTML = '<span class="aeon-system-dialogue"><span class="en">You can stop the music at any time by clicking me...</span><span class="ja">音楽を止めたかったら、私をクリックします……</span></span>';
                   
                   setTimeout(function() { // 6; 6000
                     AeonSystem.intro.innerHTML = AeonSystem.introText;
