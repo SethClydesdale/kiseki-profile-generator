@@ -49,11 +49,11 @@
       
       // display name
       name : '',
-      nameColor : '#000000',
+      nameColor : '#333333',
       
       // twitter id
       handle : '',
-      handleColor : '#000000',
+      handleColor : '#333333',
       
       // sky
       sky1 : false,
@@ -78,19 +78,19 @@
       nayuta : false,
       ysvskiseki : false,
       otherGames : '',
-      otherGamesColor : '#000000',
+      otherGamesColor : '#333333',
       
       // favorites
       favgame : '',
-      favgameColor : '#000000',
+      favgameColor : '#333333',
       favchar : '',
-      favcharColor : '#000000',
+      favcharColor : '#333333',
       favpair : '',
-      favpairColor : '#000000',
+      favpairColor : '#333333',
       
       // about me
       about : '',
-      aboutColor : '#000000'
+      aboutColor : '#333333'
     },
     
     
@@ -135,8 +135,7 @@
         case 'avatar' :
           // set avatar
           var ava = document.getElementById('kp-avatar');
-          ava.src = URL.createObjectURL(caller.files[0]);
-          ava.style.display = '';
+          ava.style.backgroundImage = 'url(' + URL.createObjectURL(caller.files[0]) + ')'; 
           
           // let user know upload was successful
           AeonSystem.avatarOK();
@@ -240,7 +239,7 @@
             field.value = 
               i == 'background' ? 'sora' :
               i == 'gender' ? 'null' :
-              /Color/.test(i) ? '#000000' : '';
+              /Color/.test(i) ? '#333333' : '';
           }
           
           // lazily update profile object + storage
@@ -249,8 +248,7 @@
         
         // remove avatar
         var ava = document.getElementById('kp-avatar');
-        ava.src = '';
-        ava.style.display = 'none';
+        ava.style.backgroundImage = '';
       }
     },
     

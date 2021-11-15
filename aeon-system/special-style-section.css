@@ -227,6 +227,9 @@ input[type="file"] {
   left:85px;
   top:113px;
   border-radius:100%;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
 }
 
 #kp-name, #kp-handle {
