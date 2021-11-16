@@ -210,6 +210,9 @@
           if (field) {
             // handles checkbox values
             if (field.tagName == 'INPUT' && field.type == 'checkbox') {
+              var node = document.getElementById('kp-' + i);
+              if (node) node.className = node.className.replace(' played', ''); // remove "played" class to prevent duplication
+              
               field.checked = AeonSystem.profile[i];
               field.dispatchEvent(new Event('change'));
               
