@@ -185,13 +185,13 @@ input[type="file"] {
      #template.kuro-bg { background-image:url(template/kuro.jpg); }
 
 /* template language */
-.en-lang #kp-lang {
+#kp-lang {
   top:0;
   left:0;
   right:0;
   bottom:0;
-  background-image:url(template/en.png);
 }
+.en-lang #kp-lang { background-image:url(template/en.png); }
 .ja-lang #kp-lang { background-image:url(template/ja.png); }
 
 /* template styles */
