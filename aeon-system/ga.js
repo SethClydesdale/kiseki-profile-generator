@@ -20,16 +20,16 @@ if (window.location.hostname == 'sethclydesdale.github.io') {
   
   // Adsense
   (function (window, document, id) {
-    var adsense = document.createElement('SCRIPT'), ad;
+    var adsense = document.createElement('SCRIPT');
     adsense.async = true;
     adsense.crossorigin = 'anonymous';
     adsense.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + id;
     document.head.appendChild(adsense);
     
-    // wait until DOM loaded to insert ads
-    window.addEventListener('DOMContentLoaded', function() {console.log('loaded');
+    // function for inserting ads into document
+    var insertAds = function() {
       var content = document.getElementById('content'),
-          logo = document.getElementById('logo');
+          logo = document.getElementById('logo'), ad;
       
       if (content && logo) {
         
@@ -61,7 +61,14 @@ if (window.location.hostname == 'sethclydesdale.github.io') {
           (adsbygoogle = window.adsbygoogle || []).push({});
         }
       }
-    });
+    };
+    
+    // wait until DOM loaded to insert ads
+    if (document.readyState !== 'loading') {
+      insertAds();
+    } else {
+      document.addEventListener('DOMContentLoaded', insertAds);
+    }
     
   }(window, document, 'ca-pub-2159011770843378'));
 }
