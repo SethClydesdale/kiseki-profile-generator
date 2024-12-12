@@ -27,7 +27,7 @@ if (window.location.hostname == 'sethclydesdale.github.io') {
     document.head.appendChild(adsense);
     
     // wait until DOM loaded to insert ads
-    window.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('DOMContentLoaded', function() {console.log('loaded');
       var content = document.getElementById('content'),
           logo = document.getElementById('logo');
       
