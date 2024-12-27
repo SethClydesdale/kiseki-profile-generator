@@ -597,7 +597,8 @@ body {
   position:absolute;
   right:-10px;
   bottom:-0px;
-  transform:rotate(125deg);
+  -webkit-transform:rotate(125deg);
+          transform:rotate(125deg);
   z-index:-1;
 }
 
@@ -740,14 +741,16 @@ h2:before { /* みしし */
 
 /* SCENE 2: Tio chases Mishy from the left to the right */
 #tio-plato.runRight {
-  transform:scaleX(-1);
+  -webkit-transform:scaleX(-1);
+          transform:scaleX(-1);
   left:100%;
   animation:tioRunRight 3s linear;
 }
 
 #mishy.runRight {
   margin-right:-450px;
-  transform:scaleX(-1);
+  -webkit-transform:scaleX(-1);
+          transform:scaleX(-1);
   left:110%;
   animation:mishyRunRight 3s linear;
 }
@@ -839,7 +842,8 @@ footer .inner { padding:10px 15px; }
   #intro-bubble:after {
     bottom:-20px;
     right:50%;
-    transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+            transform:rotate(180deg);
   }
   
   .tio-limit-break:after, .tio-limit-break:before { display:none; }
