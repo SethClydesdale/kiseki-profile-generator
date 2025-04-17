@@ -5,8 +5,8 @@
     <meta name="title" content="Kiseki Profile Generator">
     <meta name="twitter:title" content="Kiseki Profile Generator">
     <meta property="og:title" content="Kiseki Profile Generator">
-    <meta name="description" content="Create and share your Kiseki Profile with others.">
-    <meta property="og:description" content="Create and share your Kiseki Profile with others.">
+    <meta name="description" content="Create and share your Trails series profile with others.">
+    <meta property="og:description" content="Create and share your Trails series profile with others.">
     <link rel="shortcut icon" type="image/x-icon" href="aeon-system/images/tio.ico">
 
     <meta name="keywords" content="Trails profile, 軌跡プロフィール, templates, テンプレート, Falcom, ファルコム">
@@ -39,7 +39,7 @@ if (storageOK && /"lang":"ja"/.test(localStorage.kisekiProfile)) {
       <div id="content-inner">
         <h1 id="logo"><a href="./" title="Kiseki Profile Generator"><img src="aeon-system/images/logo.png" alt="Kiseki Profile Generator"></a></h1>
         <div id="intro-box" class="clear">
-          <p id="intro-bubble"><span class="en">Welcome to the Kiseki Profile Generator.</span><span class="ja">軌跡プロフィールジェネレーターへようこそ。</span><br><span class="en">This website will let you create your own personal Trails Profile that you can share with others.</span><span class="ja">このウェブサイトは、あなたの軌跡プロフィールを作らせます。</span><br><span class="en">Fill in the information below, then click "generate" under the preview to generate your image.</span><span class="ja">次の情報を書き込んで、プレビューの下の「生成する」をクリックします。</span></p>
+          <p id="intro-bubble"><span class="en">Welcome to the Kiseki Profile Generator.</span><span class="ja">軌跡プロフィールジェネレーターへようこそ。</span><br><span class="en">This website will let you create your own personal Trails Profile that you can share with others.</span><span class="ja">ここであなたの軌跡プロフィールが作れます。</span><br><span class="en">Fill in the information below, then click "generate" under the preview to generate your image.</span><span class="ja">次の情報を書き込み終わったら、プレビューの下の「生成する」をクリックしてください。</span></p>
           <div id="intro-tio-container"><img id="intro-tio" src="aeon-system/images/intro-tio.png" title="めんどくさいです・・・でもがんばります。" onclick="AeonSystem.limitBreak(this);"></div>
           <div id="preload">
             <img src="aeon-system/images/tio-staff.png">
@@ -57,8 +57,8 @@ if (storageOK && /"lang":"ja"/.test(localStorage.kisekiProfile)) {
         </div>
         
         <div id="button-options">
-          <span class="en"><a class="link-profiles button" href="https://twitter.com/search?q=%23TrailsProfile&src=typed_query&f=live" target="_blank"><i class="fa">&#xf099;</i>#TrailsProfile</a></span>
-          <span class="ja"><a class="link-profiles button" href="https://twitter.com/search?q=%23%E8%BB%8C%E8%B7%A1%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB&src=typed_query&f=live" target="_blank"><i class="fa">&#xf099;</i>#軌跡プロフィール</a></span>
+          <span class="en"><a class="link-profiles button" href="https://twitter.com/search?q=%23TrailsProfile&src=typed_query&f=live" target="_blank"><i class="fa">&#x1D54F;</i>#TrailsProfile</a></span>
+          <span class="ja"><a class="link-profiles button" href="https://twitter.com/search?q=%23%E8%BB%8C%E8%B7%A1%E3%83%97%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB&src=typed_query&f=live" target="_blank"><i class="fa">&#x1D54F;</i>#軌跡プロフィール</a></span>
           <a id="link-download" class="button" href="aeon-system/template/Kiseki%20Profile%20Templates.zip"><i class="fa">&#xf019;</i><span class="en">Download Templates</span><span class="ja">テンプレートをダウンロードする</span></a>
           <a id="link-contact" class="button" href="contact/"><i class="fa">&#xf1d8;</i><span class="en">Contact</span><span class="ja">連絡する</span></a>
           <a id="link-github" class="button" href="https://github.com/SethClydesdale/kiseki-profile-generator"><i class="fa">&#xf09b;</i>GitHub</a><br>
@@ -69,25 +69,189 @@ if (storageOK && /"lang":"ja"/.test(localStorage.kisekiProfile)) {
           <div class="info-row">
             <label class="label" for="info-lang"><span class="en">Language:</span><span class="ja">言語：</span></label>
             <select id="info-lang" onchange="AeonSystem.updateProfile(this, 'lang');">
-              <option value="en" default>English</option>
+              <option value="en" selected>English</option>
               <option value="ja">日本語</option>
             </select>
           </div>
           
           <div class="info-row">
-            <label class="label" for="info-background"><span class="en">Background:</span><span class="ja">壁紙：</span></label>
-            <select id="info-background" onchange="AeonSystem.updateProfile(this, 'background');">
-              <option value="sora" default>Sky</option>
-              <option value="crossbell">Crossbell</option>
-              <option value="sen">Cold Steel</option>
-              <option value="kuro">Kuro</option>
+            <label class="label" for="info-avatar"><span class="en">Avatar:</span><span class="ja">プロフィール写真：</span></label>
+            <div id="avatar-prev"></div>
+            <select id="info-avatar" onchange="AeonSystem.updateProfile(this, 'avatar');">
+              <option value="custom">Custom</option>
+              <optgroup label="Sky">
+                <option value="agate">Agate</option>
+                <option value="anelace">Anelace</option>
+                <option value="bleublanc">Bleublanc</option>
+                <option value="campanella">Campanella</option>
+                <option value="cassius">Cassius</option>
+                <option value="gilbert">Gilbert</option>
+                <option value="estelle" selected>Estelle</option>
+                <option value="josette">Josette</option>
+                <option value="joshua">Joshua</option>
+                <option value="julia">Julia</option>
+                <option value="kevin">Kevin</option>
+                <option value="kloe">Kloe</option>
+                <option value="loewe">Loewe</option>
+                <option value="luciola">Luciola</option>
+                <option value="mueller">Mueller</option>
+                <option value="not-mueller">Not-Mueller</option>
+                <option value="olivier">Olivier</option>
+                <option value="Renne">Renne</option>
+                <option value="richard">Richard</option>
+                <option value="ries">Ries</option>
+                <option value="scherazard">Scherazard</option>
+                <option value="tita">Tita</option>
+                <option value="walter">Walter</option>
+                <option value="weissmann">Weissmann</option>
+                <option value="zin">Zin</option>
+              </optgroup>
+              <optgroup label="Crossbell">
+                <option value="arianrhod">Arianrhod</option>
+                <option value="arios">Arios</option>
+                <option value="cao">Cao</option>
+                <option value="dieter">Dieter</option>
+                <option value="dudley">Dudley</option>
+                <option value="elie">Elie</option>
+                <option value="fran">Fran</option>
+                <option value="garcia">Garcia</option>
+                <option value="guy">Guy</option>
+                <option value="ian">Ian</option>
+                <option value="ilya">Ilya</option>
+                <option value="jingo">Jingo</option>
+                <option value="joachim">Joachim</option>
+                <option value="jona">Jona</option>
+                <option value="kea">KeA</option>
+                <option value="lloyd">Lloyd</option>
+                <option value="mariabell">Mariabell</option>
+                <option value="mishy">Mishy</option>
+                <option value="noel">Noel</option>
+                <option value="randy">Randy</option>
+                <option value="dandy-randy">Dandy Randy</option>
+                <option value="rixia">Rixia</option>
+                <option value="sergei">Sergei</option>
+                <option value="sigmund">Sigmund</option>
+                <option value="shirley">Shirley</option>
+                <option value="sully">Sully</option>
+                <option value="tio">Tio</option>
+                <option value="mishettio">Mishettio</option>
+                <option value="wald">Wald</option>
+                <option value="wazy">Wazy</option>
+                <option value="zeit">Zeit</option>
+              </optgroup>
+              <optgroup label="Cold Steel">
+                <option value="alfin">Alfin</option>
+                <option value="alisa">Alisa</option>
+                <option value="alisa-magical">Magical☆Alisa</option>
+                <option value="angelica">Angelica</option>
+                <option value="ash">Ash</option>
+                <option value="aurelia">Aurelia</option>
+                <option value="altina">Altina</option>
+                <option value="black-rabbit">Black Rabbit</option>
+                <option value="beryl">Beryl</option>
+                <option value="c">C</option>
+                <option value="celine">Celine</option>
+                <option value="celine-human">Celine (Human)</option>
+                <option value="claire">Claire</option>
+                <option value="crow">Crow</option>
+                <option value="duvalie">Duvalie</option>
+                <option value="elise">Elise</option>
+                <option value="elliot">Elliot</option>
+                <option value="emma">Emma</option>
+                <option value="ennea">Ennea</option>
+                <option value="fie">Fie</option>
+                <option value="gaius">Gaius</option>
+                <option value="george">George</option>
+                <option value="ines">Ines</option>
+                <option value="juna">Juna</option>
+                <option value="jusis">Jusis</option>
+                <option value="kurt">Kurt</option>
+                <option value="lapis">Lapis</option>
+                <option value="laura">Laura</option>
+                <option value="lechter">Lechter</option>
+                <option value="machias">Machias</option>
+                <option value="mcburn">McBurn</option>
+                <option value="millium">Millium</option>
+                <option value="musse">Musse</option>
+                <option value="nadia">Nadia</option>
+                <option value="osborne">Osborne</option>
+                <option value="rean">Rean</option>
+                <option value="rean-ogre">Rean (Ogre)</option>
+                <option value="roselia">Roselia</option>
+                <option value="rufus">Rufus</option>
+                <option value="rutger">Rutger</option>
+                <option value="sara">Sara</option>
+                <option value="sharon">Sharon</option>
+                <option value="swin">Swin</option>
+                <option value="toval">Toval</option>
+                <option value="towa">Towa</option>
+                <option value="victor">Victor</option>
+                <option value="vita">Vita</option>
+              </optgroup>
+              <optgroup label="Daybreak">
+                <option value="aaron">Aaron</option>
+                <option value="agnès">Agnès</option>
+                <option value="bergard">Bergard</option>
+                <option value="celis">Celis</option>
+                <option value="dingo">Dingo</option>
+                <option value="elaine">Elaine</option>
+                <option value="ellroy">Ellroy</option>
+                <option value="emilia">Emilia</option>
+                <option value="feri">Feri</option>
+                <option value="gerard">Gerard</option>
+                <option value="hermès">Hermès</option>
+                <option value="ixs">Ixs</option>
+                <option value="jorda">Jorda</option>
+                <option value="judith">Judith</option>
+                <option value="grimcat">Judi-- Grimcat</option>
+                <option value="kasim">Kasim</option>
+                <option value="kurogane">Kurogane</option>
+                <option value="leon">Leon</option>
+                <option value="lucrezia">Lucrezia</option>
+                <option value="mare">Mare</option>
+                <option value="marielle">Marielle</option>
+                <option value="melchior">Melchior</option>
+                <option value="nina">Nina</option>
+                <option value="paulette">Paulette</option>
+                <option value="quatre">Quatre</option>
+                <option value="rené">René</option>
+                <option value="risette">Risette</option>
+                <option value="rocksmith">Rocksmith</option>
+                <option value="roy">Roy</option>
+                <option value="shizuna">Shizuna</option>
+                <option value="simeon">Simeon</option>
+                <option value="ulrica">Ulrica</option>
+                <option value="van">Van</option>
+                <option value="yumé">Yumé</option>
+                <option value="yun">Yun</option>
+              </optgroup>
+              <optgroup label="Nayuta">
+                <option value="creha">Creha</option>
+                <option value="cygna">Cygna</option>
+                <option value="lyra">Lyra</option>
+                <option value="nayuta">Nayuta</option>
+                <option value="noi">Noi</option>
+              </optgroup>
             </select>
+            <button id="uploadAvatar" class="button" onclick="this.nextSibling.click();"><i class="fa">&#xf093;</i><span class="en">Upload</span><span class="ja">アップロードする</span></button><input id="info-avatarCustom" type="file" accept="image/*" onchange="AeonSystem.updateProfile(this, 'avatarCustom');">
+            <span id="uploadOK" style="display:none;"><span class="en">Uploaded!</span><span class="ja">アップロードした！</span><img src="aeon-system/images/mishy-upload-ok.png"></span>
           </div>
           
           <div class="info-row">
-            <label class="label" for="info-avatar"><span class="en">Avatar:</span><span class="ja">プロフィール写真：</span></label>
-            <button id="uploadAvatar" class="button" onclick="this.nextSibling.click();"><i class="fa">&#xf093;</i><span class="en">Upload</span><span class="ja">アップロードする</span></button><input id="info-avatar" type="file" accept="image/*" onchange="AeonSystem.updateProfile(this, 'avatar');">
-            <span id="uploadOK" style="display:none;"><span class="en">Uploaded!</span><span class="ja">アップロードした！</span><img src="aeon-system/images/mishy-upload-ok.png"></span>
+            <label class="label" for="info-background"><span class="en">Background:</span><span class="ja">壁紙：</span></label>
+            <div id="bg-prev"></div>
+            <select id="info-background" onchange="AeonSystem.updateProfile(this, 'background');">
+              <option value="sora" selected>Sky</option>
+              <option value="sora2">Sky 2</option>
+              <option value="crossbell">Crossbell</option>
+              <option value="crossbell2">Crossbell 2</option>
+              <option value="sen">Cold Steel</option>
+              <option value="sen2">Cold Steel 2</option>
+              <option value="kuro">Daybreak</option>
+              <option value="kuro2">Daybreak 2</option>
+              <option value="nayuta">Nayuta</option>
+              <option value="nayuta2">Nayuta 2</option>
+            </select>
           </div>
           
           <div class="info-row">
@@ -97,7 +261,7 @@ if (storageOK && /"lang":"ja"/.test(localStorage.kisekiProfile)) {
           </div>
           
           <div class="info-row">
-            <label class="label" for="info-handle">Twitter ID:</label>
+            <label class="label" for="info-handle">X ID:</label>
             <input id="info-handle" type="text" oninput="AeonSystem.updateProfile(this, 'text');">
             <input id="info-handleColor" type="color" oninput="AeonSystem.updateProfile(this, 'fontColor');">
           </div>
@@ -105,7 +269,7 @@ if (storageOK && /"lang":"ja"/.test(localStorage.kisekiProfile)) {
           <div class="info-row">
             <label class="label" for="info-gender"><span class="en">Gender:</span><span class="ja">性別：</span></label>
             <select id="info-gender" onchange="AeonSystem.updateProfile(this, 'gender');">
-              <option value="null" default>N/A</option>
+              <option value="null" selected>N/A</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="other">Other</option>
@@ -136,8 +300,10 @@ if (storageOK && /"lang":"ja"/.test(localStorage.kisekiProfile)) {
           </div>
           
           <div class="info-row">
-            <label class="label"><span class="en">Kuro:</span><span class="ja">黎の軌跡：</span></label>
-            <label class="checkbox"><input id="info-kuro1" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');"><span class="en">Kuro</span><span class="ja">黎の軌跡</span></label>
+            <label class="label"><span class="en">Daybreak:</span><span class="ja">黎の軌跡：</span></label>
+            <label class="checkbox"><input id="info-kuro1" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">I</label><span class="divider"></span>
+            <label class="checkbox"><input id="info-kuro2" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');">II</label><span class="divider"></span>
+            <label class="checkbox"><input id="info-kai1" type="checkbox" onchange="AeonSystem.updateProfile(this, 'checkbox');"><span class="en">Horizon</span><span class="ja">界の軌跡</span></label>
           </div>
           
           <div class="info-row">
@@ -186,11 +352,18 @@ if (storageOK && /"lang":"ja"/.test(localStorage.kisekiProfile)) {
         </div>
         
         <h2 id="preview"><span class="en">Preview</span><span class="ja">プレビュー</span></h2>
+        <div class="info-row">
+          <label class="label" for="info-prevMode"><span class="en">Preview Mode:</span><span class="ja">プレビューモード：</span></label>
+          <select id="info-prevMode" onchange="AeonSystem.updateProfile(this, 'prevMode');">
+            <option value="full" selected>Full</option>
+            <option value="zoom">Zoom</option>
+          </select>
+        </div>
         <div class="center">
-          <div id="preview-box">
+          <div id="preview-box" class="prev-full">
             <div id="template" class="sora-bg null-gender">
               <div id="kp-lang"></div>
-              <div id="kp-avatar"></div>
+              <div id="kp-avatar-container"><div id="kp-avatar"></div></div>
               <div id="kp-name" class="text-zone"></div>
               <div id="kp-handle" class="text-zone"></div>
               <div id="kp-gender" class="circle"></div>
@@ -204,7 +377,9 @@ if (storageOK && /"lang":"ja"/.test(localStorage.kisekiProfile)) {
               <div id="kp-sen3" class="circle"></div>
               <div id="kp-sen4" class="circle"></div>
               <div id="kp-haji" class="rect"></div>
-              <div id="kp-kuro1" class="rect"></div>
+              <div id="kp-kuro1" class="circle"></div>
+              <div id="kp-kuro2" class="circle"></div>
+              <div id="kp-kai1" class="rect"></div>
               <div id="kp-nayuta" class="rect"></div>
               <div id="kp-ysvskiseki" class="rect"></div>
               <div id="kp-otherGames" class="text-zone"></div>

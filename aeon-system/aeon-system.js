@@ -44,6 +44,8 @@
       // template background image
       lang : 'en',
       background : 'sora',
+      avatar : 'estelle',
+      avatarCustom : '',
       
       gender : 'null',
       
@@ -73,6 +75,8 @@
       
       // kuro
       kuro1 : false,
+      kuro2 : false,
+      kai1 : false,
       
       // other
       nayuta : false,
@@ -90,8 +94,14 @@
       
       // about me
       about : '',
-      aboutColor : '#333333'
+      aboutColor : '#333333',
+      
+      // display settings
+      prevMode : 'full'
     },
+    
+    // cached data
+    cache : {},
     
     
     // updates the kiseki profile with new data
@@ -101,25 +111,41 @@
           // update main language class for switching texts
           document.body.className = document.body.className.replace(/(?:en|ja)-lang/, caller.value + '-lang');
           
+          // update avatar select texts
+          var ava = document.getElementById('info-avatar'),
+              selected = ava.value;
+              if (!AeonSystem.cache.opts_avatar) AeonSystem.cache.opts_avatar = document.getElementById('info-avatar').innerHTML;
+          
+          if (caller.value == 'en') {
+            ava.innerHTML = AeonSystem.cache.opts_avatar;
+            ava.value = selected;
+            
+          } else {
+            ava.innerHTML = '<option value="custom">カスタム</option><optgroup label="空の軌跡"><option value="agate">アガット</option><option value="anelace">アネラス</option><option value="bleublanc">ブルブラン</option><option value="campanella">カンパネルラ</option><option value="cassius">カシウス</option><option value="gilbert">ギルバート</option><option value="estelle" selected>エステル</option><option value="josette">ジョゼット</option><option value="joshua">ヨシュア</option><option value="julia">ユリア</option><option value="kevin">ケビン</option><option value="kloe">クローゼ</option><option value="loewe">レーヴェ</option><option value="luciola">ルシオラ</option><option value="mueller">ミュラー</option><option value="not-mueller">ミュラーじゃない</option><option value="olivier">オリビエ</option><option value="Renne">レン</option><option value="richard">リシャール</option><option value="ries">リース</option><option value="scherazard">シェラザード</option><option value="tita">ティータ</option><option value="walter">ヴァルター</option><option value="weissmann">ワイスマン</option><option value="zin">ジン</option></optgroup><optgroup label="クロスベル"><option value="arianrhod">アリアンロード</option><option value="arios">アリオス</option><option value="cao">ツァオ</option><option value="dieter">ディーター</option><option value="dudley">ダドリー</option><option value="elie">エリィ</option><option value="fran">フラン</option><option value="garcia">ガルシア</option><option value="guy">ガイ</option><option value="ian">イアン</option><option value="ilya">イリア</option><option value="jingo">ジンゴ</option><option value="joachim">ヨアヒム</option><option value="jona">ヨナ</option><option value="kea">キーア</option><option value="lloyd">ロイド</option><option value="mariabell">マリアベル</option><option value="mishy">みっしぃ</option><option value="noel">ノエル</option><option value="randy">ランディ</option><option value="dandy-randy">ダンディなランディ</option><option value="rixia">リーシャ</option><option value="sergei">セルゲイ</option><option value="sigmund">シグムント</option><option value="shirley">シャーリィ</option><option value="sully">シュリ</option><option value="tio">ティオ</option><option value="mishettio">みーしぇティオ</option><option value="wald">ヴァルド</option><option value="wazy">ワジ</option><option value="zeit">ツァイト</option></optgroup><optgroup label="閃の軌跡"><option value="alfin">アルフィン</option><option value="alisa">アリサ</option><option value="alisa-magical">まじかる☆アリサ</option><option value="angelica">アンゼリカ</option><option value="ash">アッシュ</option><option value="aurelia">オーレリア</option><option value="altina">アルティナ</option><option value="black-rabbit">ブラックラビット</option><option value="beryl">ベリル</option><option value="c">C</option><option value="celine">セリーヌ</option><option value="celine-human">セリーヌ（人間）</option><option value="claire">クレア</option><option value="crow">クロウ</option><option value="duvalie">デュバリィ</option><option value="elise">エリゼ</option><option value="elliot">エリオット</option><option value="emma">エマ</option><option value="ennea">エンネア</option><option value="fie">フィー</option><option value="gaius">ガイウス</option><option value="george">ジョルジュ</option><option value="ines">アイネス</option><option value="juna">ユウナ</option><option value="jusis">ユーシス</option><option value="kurt">クルト</option><option value="lapis">ラピス</option><option value="laura">ラウラ</option><option value="lechter">レクター</option><option value="machias">マキアス</option><option value="mcburn">マクバーン</option><option value="millium">ミリアム</option><option value="musse">ミュゼ</option><option value="nadia">ナーディア</option><option value="osborne">オズボーン</option><option value="rean">リィン</option><option value="rean-ogre">リィン（鬼）</option><option value="roselia">ローゼリア</option><option value="rufus">ルーファス</option><option value="rutger">ルトガー</option><option value="sara">サラ</option><option value="sharon">シャロン</option><option value="swin">スウィン</option><option value="toval">トヴァル</option><option value="towa">トワ</option><option value="victor">ヴィクター</option><option value="vita">ヴィータ</option></optgroup><optgroup label="黎の軌跡"><option value="aaron">アーロン</option><option value="agnès">アニエス</option><option value="bergard">ベルガルド</option><option value="celis">セリス</option><option value="dingo">ディンゴ</option><option value="elaine">エレイン</option><option value="ellroy">エルロイ</option><option value="emilia">エミリア</option><option value="feri">フェリ</option><option value="gerard">ジェラール</option><option value="hermès">エルメス</option><option value="ixs">イクス</option><option value="jorda">ヨルダ</option><option value="judith">ジュディス</option><option value="grimcat">ジュディ――怪盗グリムキャッツ</option><option value="kasim">カシム</option><option value="kurogane">クロガネ</option><option value="leon">リオン</option><option value="lucrezia">ルクレツィア</option><option value="mare">メア</option><option value="marielle">マリエル</option><option value="melchior">メルキオル</option><option value="nina">ニナ</option><option value="paulette">ポーレット</option><option value="quatre">カトル</option><option value="rené">ルネ</option><option value="risette">リゼット</option><option value="rocksmith">ロックスミス</option><option value="roy">ロイ</option><option value="shizuna">シズナ</option><option value="simeon">シメオン</option><option value="ulrica">ウルリカ</option><option value="van">ヴァン</option><option value="yumé">ユメ</option><option value="yun">ユン</option></optgroup><optgroup label="那由多の軌跡"><option value="creha">クレハ</option><option value="cygna">シグナ</option><option value="lyra">ライラ</option><option value="nayuta">ナユタ</option><option value="noi">ノイ</option></optgroup>';
+            ava.value = selected;
+          }
+          
           // update background select texts
           var bg = document.getElementById('info-background'),
               selected = bg.value;
+              if (!AeonSystem.cache.opts_bg) AeonSystem.cache.opts_bg = document.getElementById('info-background').innerHTML;
           
           if (caller.value == 'en') {
-            bg.innerHTML = '<option value="sora" default>Sky</option><option value="crossbell">Crossbell</option><option value="sen">Cold Steel</option><option value="kuro">Kuro</option>';
+            bg.innerHTML = AeonSystem.cache.opts_bg;
             bg.value = selected;
             
           } else {
-            bg.innerHTML = '<option value="sora" default>空の軌跡</option><option value="crossbell">クロスベル</option><option value="sen">閃の軌跡</option><option value="kuro">黎の軌跡</option>';
+            bg.innerHTML = '<option value="sora" default>空の軌跡</option><option value="sora2" default>空の軌跡2</option><option value="crossbell">クロスベル</option><option value="crossbell2">クロスベル2</option><option value="sen">閃の軌跡</option><option value="sen2">閃の軌跡2</option><option value="kuro">黎の軌跡</option><option value="kuro2">黎の軌跡2</option><option value="nayuta">那由多の軌跡</option><option value="nayuta2">那由多の軌跡2</option>';
             bg.value = selected;
           }
           
           // update gender select options
           var gender = document.getElementById('info-gender'),
               selected = gender.value;
+              if (!AeonSystem.cache.opts_gender) AeonSystem.cache.opts_gender = document.getElementById('info-gender').innerHTML;
           
           if (caller.value == 'en') {
-            gender.innerHTML = '<option value="null" default>N/A</option><option value="male">Male</option><option value="female">Female</option><option value="other">Other</option>';
+            gender.innerHTML = AeonSystem.cache.opts_gender;
             gender.value = selected;
             
           } else {
@@ -127,27 +153,74 @@
             gender.value = selected;
           }
           
+          // update preview mode select options
+          var prevMode = document.getElementById('info-prevMode'),
+              selected = prevMode.value;
+              if (!AeonSystem.cache.opts_prevMode) AeonSystem.cache.opts_prevMode = document.getElementById('info-prevMode').innerHTML;
+          
+          if (caller.value == 'en') {
+            prevMode.innerHTML = AeonSystem.cache.opts_prevMode;
+            prevMode.value = selected;
+            
+          } else {
+            prevMode.innerHTML = '<option value="full" default>丸見え</option><option value="zoom">ズーム</option>';
+            prevMode.value = selected;
+          }
+          
           // update object settings
           AeonSystem.profile.lang = caller.value;
           break;
           
-        // note: avatar data is not saved
+        // changes preview mode
+        case 'prevMode' :
+          var preview = document.getElementById('preview-box');
+          if (preview) {
+            preview.className = 'prev-' + caller.value;
+            AeonSystem.profile.prevMode = caller.value;
+          }
+          break;
+          
+        // changes avatar
         case 'avatar' :
           // set avatar
-          var ava = document.getElementById('kp-avatar');
-          ava.style.backgroundImage = 'url(' + URL.createObjectURL(caller.files[0]) + ')'; 
+          var ava = document.getElementById('kp-avatar'),
+              prev = document.getElementById('avatar-prev'),
+              img = 'url(' + (caller.value == 'custom' ? AeonSystem.profile.avatarCustom : 'aeon-system/avatar/' + caller.value + '.jpg') + ')';
+          
+          ava.style.backgroundImage = img; 
+          AeonSystem.profile.avatar = caller.value;
+          
+          // shows background preview
+          if (prev) {
+            prev.style.backgroundImage = img;
+          }
+          break;
+          
+        case 'avatarCustom' :
+          // save avatar to aeon system
+          AeonSystem.profile.avatarCustom = URL.createObjectURL(caller.files[0]);
+          
+          // set avatar to "custom" and apply the custom avatar
+          field = document.getElementById('info-avatar');
+          field.value = 'custom';
+          field.dispatchEvent(new Event('change'));
           
           // let user know upload was successful
           AeonSystem.avatarOK();
 
           // clears input so file can be loaded again
-          document.getElementById('info-avatar').value = '';
+          document.getElementById('info-avatarCustom').value = '';
           break;
           
         case 'background' :
-          var tmp = document.getElementById('template');
-          tmp.className = tmp.className.replace(/(?:sora|crossbell|sen|kuro)-bg/, caller.value + '-bg');
+          var tmp = document.getElementById('template'), prev = document.getElementById('bg-prev');
+          tmp.className = tmp.className.replace(/(?:sora|sora2|crossbell|crossbell2|sen|sen2|kuro|kuro2|nayuta|nayuta2)-bg/, caller.value + '-bg');
           AeonSystem.profile.background = caller.value;
+          
+          // shows background preview
+          if (prev) {
+            prev.style.backgroundImage = 'url(aeon-system/template/' + caller.value + '.jpg)';
+          }
           break;
           
         case 'gender' :
@@ -207,23 +280,25 @@
         for (var i in AeonSystem.profile) {
           var field = document.getElementById('info-' + i);
           
-          if (field) {
-            // handles checkbox values
-            if (field.tagName == 'INPUT' && field.type == 'checkbox') {
-              var node = document.getElementById('kp-' + i);
-              if (node) node.className = node.className.replace(' played', ''); // remove "played" class to prevent duplication
-              
-              field.checked = AeonSystem.profile[i];
-              field.dispatchEvent(new Event('change'));
-              
+          if (!/avatarCustom/.test(i)) { // exclusions
+            if (field) {
+              // handles checkbox values
+              if (field.tagName == 'INPUT' && field.type == 'checkbox') {
+                var node = document.getElementById('kp-' + i);
+                if (node) node.className = node.className.replace(' played', ''); // remove "played" class to prevent duplication
+
+                field.checked = AeonSystem.profile[i];
+                field.dispatchEvent(new Event('change'));
+
+              } else {
+                field.value = AeonSystem.profile[i];
+                // lazily trigger bound events to update the template automatically so we don't have to do it here
+                field.dispatchEvent(new Event(field.tagName == 'SELECT' ? 'change' : 'input'));
+              }
+
             } else {
-              field.value = AeonSystem.profile[i];
-              // lazily trigger bound events to update the template automatically so we don't have to do it here
-              field.dispatchEvent(new Event(field.tagName == 'SELECT' ? 'change' : 'input'));
+              console.error(field, i, AeonSystem.profile[i]);
             }
-            
-          } else {
-            console.error(field, i, AeonSystem.profile[i]);
           }
         }
       }
@@ -240,8 +315,10 @@
             
           } else if (i != 'lang') {
             field.value = 
+              i == 'avatar' ? 'estelle' :
               i == 'background' ? 'sora' :
               i == 'gender' ? 'null' :
+              i == 'prevMode' ? 'full' :
               /Color/.test(i) ? '#333333' : '';
           }
           
@@ -259,12 +336,25 @@
     // generates the kiseki profile image using html2canvas
     // (does not work locally unless browser is running with cors disabled. Chrome flag for that: --disable-web-security --user-data-dir=c:\my\data)
     generateProfile : function () {
+      // restore preview to normal size, otherwise the image won't be generated properly
+      var preview = document.getElementById('preview-box'), full = false;
+      if (preview && /prev-full/.test(preview.className)) {
+        preview.className = '';
+        full = true;
+      }
+      
+      // generate profile
       html2canvas(document.getElementById('template')).then(function(canvas) {
         var link = document.createElement('A');
         link.href = canvas.toDataURL();
         link.download = 'kiseki-profile.png';
         link.click();
       });
+      
+      // restore user preview preference
+      if (full) {
+        preview.className = 'prev-full';
+      }
     },
     
     
@@ -380,7 +470,7 @@
                 AeonSystem.animating = false;
                 
                 setTimeout(function() { // 5; 1000
-                  AeonSystem.intro.innerHTML = '<span class="aeon-system-dialogue"><span class="en">You can stop the music at any time by clicking me...</span><span class="ja">音楽を止めたかったら、私をクリックします……</span></span>';
+                  AeonSystem.intro.innerHTML = '<span class="aeon-system-dialogue"><span class="en">You can stop the music at any time by clicking me...</span><span class="ja">音楽を止めたかったら、私をクリックしてください……</span></span>';
                   
                   setTimeout(function() { // 6; 6000
                     AeonSystem.intro.innerHTML = AeonSystem.introText;
