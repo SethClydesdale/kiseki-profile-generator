@@ -3,6 +3,9 @@ Kiseki Profile Generator is a website that lets you create your own Trails serie
 
 **https://sethclydesdale.github.io/kiseki-profile-generator/**
 
+### Demo
+<img src="aeon-system/images/demo.png">
+
 
 ## Profile Templates 
 This website was created to help make the process of filling out the image template easier, since not everyone has access to image editing software. However, if you'd like to add your own personal flair, feel free to download the templates via the following link.
