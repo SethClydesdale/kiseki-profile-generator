@@ -83,6 +83,32 @@
   display:none !important;
 }
 
+/* other kiseki things */
+#other-kiseki-things {
+  margin-top:10px;
+  margin-bottom:30px;
+  font-size:0;
+}
+
+#other-kiseki-things a {
+  background:#FFF;
+  border:2px solid #39C;
+  border-radius:10px;
+  display:inline-block;
+  margin:5px;
+  overflow:hidden;
+  transition:transform 200ms;
+}
+
+#other-kiseki-things a:hover {
+  transform:scale(1.05);
+}
+
+#other-kiseki-things a img {
+  max-height:100px;
+  max-width:100%;
+}
+
 
 /* info inputs */
 input[type="text"], input[type="color"], textarea, select {

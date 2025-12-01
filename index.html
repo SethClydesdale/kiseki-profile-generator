@@ -64,9 +64,17 @@ if (storageOK && /"lang":"ja"/.test(localStorage.kisekiProfile)) {
           <a id="link-github" class="button" href="https://github.com/SethClydesdale/kiseki-profile-generator"><i class="fa">&#xf09b;</i>GitHub</a><br>
         </div>
         
-        <div id="agnes-style" class="center" style="margin:30px 0;">
-          <a href="https://sethclydesdale.github.io/projects/agnes-style/" target="_blank">
-            <img src="aeon-system/images/agnes-style.jpg" alt="Trails through Daybreak: ~Agnès' Style~" style="max-width:100%;">
+        
+        <h2 id="info"><span class="en">Other Trails Things</span><span class="ja">他の軌跡ウェブサイト</span></h2>
+        <div id="other-kiseki-things" class="center">
+          <a href="https://sethclydesdale.github.io/typing-with-mishy/lang/en/" target="_blank" id="typing-with-mishy" title="Test your typing skills with Mishy!">
+            <img id="typing-with-mishy-img" src="aeon-system/images/typing-with-mishy.jpg" alt="Typing with Mishy">
+          </a>
+          <a href="https://sethclydesdale.github.io/tio-plato-is-the-best/" target="_blank" title="Listen to some of Falcom's greatest hits while watching a slide show of Tio Plato.">
+            <img id="tio-plato-is-the-best-img" src="aeon-system/images/tio-plato-is-the-best.jpg" alt="Tio Plato is the Best">
+          </a>
+          <a href="https://sethclydesdale.github.io/projects/falcom-stickers/" target="_blank" title="Get these oh-so-cute Altina sticker sets to lighten up your chats!">
+            <img id="tio-plato-is-the-best-img" src="aeon-system/images/laid-back-altina.jpg" alt="Laid-back Altina Stickers">
           </a>
         </div>
         
@@ -267,7 +275,7 @@ if (storageOK && /"lang":"ja"/.test(localStorage.kisekiProfile)) {
           </div>
           
           <div class="info-row">
-            <label class="label" for="info-handle">X ID:</label>
+            <label class="label" for="info-handle">ID:</label>
             <input id="info-handle" type="text" oninput="AeonSystem.updateProfile(this, 'text');">
             <input id="info-handleColor" type="color" oninput="AeonSystem.updateProfile(this, 'fontColor');">
           </div>
