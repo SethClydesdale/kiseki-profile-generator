@@ -115,7 +115,8 @@ input[type="text"], input[type="color"], textarea, select {
   font-size:16px;
   font-family:'メイリオ', 'Meiryo', 'Osaka', 'ＭＳ Ｐゴシック', 'MS PGothic', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Arial, sans-serif;
   background:#FFF;
-  border:1px solid #CCC;
+  border:2px solid #CCC;
+  border-radius:5px;
   padding:6px;
   outline:none;
 }
@@ -727,6 +728,7 @@ a:hover { text-decoration:underline; }
   font-family:'メイリオ',Meiryo,Osaka,'ＭＳ Ｐゴシック','MS PGothic',"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Arial,sans-serif;
   text-decoration:none;
   border:none;
+  border-radius:5px;
   font-weight:bold;
   display:inline-block;
   padding:6px 12px;
@@ -770,6 +772,96 @@ a:hover { text-decoration:underline; }
   background:url(images/mishy-tail.png) no-repeat 0 50%;
   min-height:25px;
   padding-left:35px;
+}
+
+
+/* CUSTOM INPUTS */
+/* checkboxes and raido inputs */
+.pseudo_checkbox, .pseudo_radio {
+  display:inline-block;
+  text-align:center;
+  background:#FFF;
+  border:2px solid #CCC;
+  border-radius:5px;
+  height:20px;
+  width:20px;
+  vertical-align:middle;
+  margin-right:3px;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.pseudo_checkbox:hover, .pseudo_radio:hover,
+.pseudo_checkbox:focus, .pseudo_radio:focus {
+  border-color:#39C;
+  outline:none;
+}
+
+/* disabled */
+input[disabled] + .pseudo_checkbox, input[disabled] + .pseudo_radio {
+  opacity:0.5;
+  cursor:not-allowed;
+}
+
+/* radio */
+.pseudo_radio { border-radius:100%; }
+.pseudo_radio:before, .pseudo_radio:after, input:checked + .pseudo_radio:after {
+  content:"";
+  font-size:0;
+  border-radius:100%;
+  position:absolute;
+  top:4px;
+  left:4px;
+  height:12px;
+  width:12px;
+}
+
+.pseudo_radio:before { background:#CCC; }
+.pseudo_radio:after {
+  background:#39C;
+  top:8px;
+  left:8px;
+  height:0;
+  width:0;
+}
+
+/* checkbox */
+.pseudo_checkbox:after {
+  content:"\f00c";
+  color:#39C;
+  font-family:FontAwesomeWeb, FontAwesome;
+  font-size:0px;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  line-height:20px;
+}
+
+input:checked + .pseudo_checkbox {
+  background:#39C;
+  border-color:#28B
+}
+
+input:checked + .pseudo_checkbox:after {
+  color:#FFF;
+  font-size:18px;
+}
+
+input:checked + .pseudo_checkbox:hover {
+  opacity:0.7;
+}
+
+.input_hidden {
+  visibility:hidden;
+  position:absolute;
+}
+
+.checkbox-label {
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 

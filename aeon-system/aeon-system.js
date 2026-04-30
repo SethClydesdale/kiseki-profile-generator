@@ -36,6 +36,14 @@
           }
         }
       }
+      
+      // # CUSTOM INPUTS #
+      for (var input = document.querySelectorAll('input[type="checkbox"], input[type="radio"]'), i = 0, j = input.length, type; i < j; i++) {
+        if (!/light-switch-checkbox|kantan_input_hidden/g.test(input[i].outerHTML)) { // exclusions
+          input[i].className += ' input_hidden';
+          input[i].insertAdjacentHTML('afterend', '<span tabindex="0" class="pseudo_' + input[i].type + '" onclick="this.previousSibling.click(); return false;" onkeypress="event.key == \'Enter\' && this.previousSibling.click(); return false;"/>');
+        }
+      }
     },
     
     
