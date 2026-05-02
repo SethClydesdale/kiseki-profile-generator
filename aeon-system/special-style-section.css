@@ -973,13 +973,6 @@ footer .inner { padding:10px 15px; }
 .footer-left { float:left; }
 .footer-right { float:right; }
 
-/* ADS */
-.ad-container {
-  text-align:center;
-  margin:15px 0;
-}
-.ad-container.ad-top { margin-bottom:40px; }
-
 /* responsive thingies */
 @media (max-width:1200px) {
   #preview-box.prev-full { margin-left:-230px; }
