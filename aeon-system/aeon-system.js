@@ -178,7 +178,7 @@
             prevMode.value = selected;
             
           } else {
-            prevMode.innerHTML = '<option value="full" default>丸見え</option><option value="zoom">ズーム</option>';
+            prevMode.innerHTML = '<option value="full" default>全体表示</option><option value="zoom">ズーム</option>';
             prevMode.value = selected;
           }
           
